@@ -1,0 +1,2 @@
+crownClothing ===FetchData>Firebase
+initally web send a request to google sever and it verfies and send a auth_token that auth token is send to the fire base then the fires base to verify that auth tken so it get connection ith the google server once it get confirmed googel server will send verify token Firebase will send the access token that verify token will aloow web to authenticate and then do crud operations based on the authoriZation level i need to send the crud opertaion along with the access token and perform certain request.
