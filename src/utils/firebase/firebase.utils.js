@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from 'firebase/auth'
 import {
   getFirestore,
@@ -58,12 +60,13 @@ export const createUserDocumnetFromAuth = async (
     const { displayName, email } = userAuth
     const createdAt = new Date()
     try {
-      await setDoc(userDocRef, {
+      const res = await setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
         ...additonalInformation,
       }) // creating a new userusing setDoc method with the userDocRef what is in the user Doc is like the firebase database instnce that we need to create the new user
+      console.log(res, 'response from user creation document in firebase')
     } catch (error) {
       console.log('error in creating user', error)
     }
@@ -82,11 +85,20 @@ export const CreateAuthUserEmailAndPassword = async (email, password) => {
   return res
 }
 
-export const signInEmailAndPassword = async (email, password) => {
+export const signInWithAuthEmailAndPassword = async (email, password) => {
   if (!email || !password) {
     return
   }
   const res = await signInWithEmailAndPassword(auth, email, password)
   console.log(res, 'user signed in response')
   return res
+}
+
+export const handleSignOut = async () => {
+  const res = await signOut(auth)
+  console.log(res)
+}
+
+export const onAuthStateHanlder = (callback) => {
+  onAuthStateChanged(auth, callback) // this onAuthStateChanged handler is used foe storing the current auth information the current auth information is like when a user signed in then the user object and when the user signed out the null object
 }

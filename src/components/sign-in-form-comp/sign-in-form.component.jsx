@@ -1,19 +1,21 @@
-import React from 'react'
+import { React, useContext } from 'react'
 import './sign-in.styles.scss'
 import { useState, Fragment } from 'react'
 import {
   CreateAuthUserEmailAndPassword,
   createUserDocumnetFromAuth,
   signInWithGooglePopup,
-  signInEmailAndPassword,
+  signInWithAuthEmailAndPassword,
 } from '../../utils/firebase/firebase.utils'
 import InputComponent from '../form-input/form-input.component'
 import Button from '../Button/Button.component'
+// import { UserContext } from '../../context/user.context'  no need because we are centeralizing it in context like our inhouse projects
 const FormFields = {
   email: '',
   password: '',
 }
 const SignIn = () => {
+  // const { setCurrentUer } = useContext(UserContext)  no need because we are centeralizing it in context like our inhouse projects
   const [formFields, setFormFields] = useState(FormFields)
 
   const { displayName, email, password, confirmPassword } = formFields
@@ -31,8 +33,9 @@ const SignIn = () => {
     event.preventDefault()
 
     try {
-      const res = await signInEmailAndPassword(email, password)
-      console.log(res, 'sign i reponse')
+      const { user } = await signInWithAuthEmailAndPassword(email, password)
+      // setCurrentUer(user) no need because we are centeralizing it in context like our inhouse projects
+      console.log(user, 'sign i reponse')
     } catch (error) {
       console.log(error, 'error in creating user')
     }
@@ -41,11 +44,8 @@ const SignIn = () => {
 
   const SignInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup()
-    const userDocRef = await createUserDocumnetFromAuth(user)
-    console.log(
-      userDocRef,
-      'returing from the firebase user creating instances',
-    )
+    // const userDocRef = await createUserDocumnetFromAuth(user) no need here because we centeralised it in the user context
+    console.log(user, 'Sign in with google')
   }
   return (
     <Fragment>

@@ -1,2 +1,12 @@
 crownClothing ===FetchData>Firebase
 initally web send a request to google sever and it verfies and send a auth_token that auth token is send to the fire base then the fires base to verify that auth tken so it get connection ith the google server once it get confirmed googel server will send verify token Firebase will send the access token that verify token will aloow web to authenticate and then do crud operations based on the authoriZation level i need to send the crud opertaion along with the access token and perform certain request.
+
+About context -----------------------------------------------------------------
+UserProvider: This component manages the state related to user data and provides it to its child components using the UserContext.Provider. It controls how the data is initialized, updated, and made available to the rest of the application.
+
+UserContext: This is the context object that defines what data is available and how to access it. It's typically exported to allow other components to use it.
+
+
+
+
+
