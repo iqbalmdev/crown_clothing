@@ -15,7 +15,12 @@ import {
   doc,
   getDoc,
   setDoc,
+  addDoc,
   Firestore,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
 } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -45,6 +50,74 @@ export const signInWithGoogleRedirect = () =>
 export const db = getFirestore() // creating database instanciating the firestore database .... it will directly point our database in our console
 
 //
+
+export const addCollectionDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey)
+  const batch = writeBatch(db)
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase())
+    batch.set(docRef, object)
+  })
+  await batch.commit()
+  console.log('DOne')
+}
+
+export const addNewCollection1 = async () => {
+  try {
+    // Specify the custom document ID (without slashes)
+    const customDocumentId = 'list3'
+
+    // const documentRef = doc(db, 'samplesIqbalgv', customDocumentId)
+    doc(db, 'samplesIqbalgv', customDocumentId)
+
+    // Define the data you want to set in the document
+    const data = {
+      name: 'nisha',
+      age: 19,
+      // Add other fields as needed
+    }
+
+    // Set the data in the document
+    // await setDoc(documentRef, data)
+
+    console.log('Document successfully created and data set.')
+  } catch (error) {
+    console.error('Error creating custom document: ', error)
+  }
+}
+export const addNewCollection = async () => {
+  try {
+    // Specify the custom document ID (without slashes)
+    const customDocumentId = 'list3'
+    // create a new doicument if the name with same document existe it will over write the updated value on that
+    const documentRef = doc(db, 'samplesIqbalgv', customDocumentId)
+    const data = {
+      name: 'hellooooo',
+      age: 19,
+      // Add other fields as needed
+    }
+
+    console.log(documentRef, 'document ref ')
+    await setDoc(documentRef, data)
+    console.log('Document successfully created.')
+  } catch (error) {
+    console.error('Error creating custom document: ', error)
+  }
+}
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, 'categories')
+  const q = query(collectionRef)
+
+  const querySnapshot = await getDocs(q)
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data()
+    acc[title.toLowerCase()] = items
+    return acc
+  }, {})
+
+  return categoryMap
+}
 export const createUserDocumnetFromAuth = async (
   userAuth,
   additonalInformation,
