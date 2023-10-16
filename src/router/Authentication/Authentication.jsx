@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from 'react'
 import SignUpForm from '../../components/sign-up-form/sign-up-form.component'
 import {
-  signInWithGooglePopup,
   createUserDocumnetFromAuth,
+  // signInWithGooglePopup,
   // signInWithGoogleRedirect,
   auth,
 } from '../../utils/firebase/firebase.utils'

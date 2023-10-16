@@ -3,7 +3,7 @@ import { createContext } from 'react'
 import {
   onAuthStateHanlder,
   createUserDocumnetFromAuth,
-  handleSignOut,
+  // handleSignOut,
 } from '../utils/firebase/firebase.utils'
 export const UserContext = createContext({
   currentUser: null,

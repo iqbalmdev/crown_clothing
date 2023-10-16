@@ -24,7 +24,6 @@ export const addCartItem = (cartItems, productToAdd) => {
 
 export const CartContext = createContext({
   setCart: false,
-
   cartItems: [],
   addItemTocart: () => {},
   cartCount: 0,
@@ -65,13 +64,13 @@ export const CartProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0)
 
   const [total, setTotal] = useState(0)
-  const setCount = () => {
-    cartItems.reduce((total, currentItem) => {
-      console.log(currentItem.quantity, 'see here the quantity')
-      console.log(total + currentItem.quantity, 'see here the quantity iess')
-      return total + currentItem.quantity
-    }, 0)
-  }
+  // const setCount = () => {
+  //   cartItems.reduce((total, currentItem) => {
+  //     console.log(currentItem.quantity, 'see here the quantity')
+  //     console.log(total + currentItem.quantity, 'see here the quantity iess')
+  //     return total + currentItem.quantity
+  //   }, 0)
+  // }
 
   const deleteCartItem = (productToDelete) => {
     console.log('delete the cart function', productToDelete)
