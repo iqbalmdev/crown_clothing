@@ -1,9 +1,7 @@
-import { React, useContext } from 'react'
+import { React } from 'react'
 import './sign-in.styles.scss'
 import { useState, Fragment } from 'react'
 import {
-  CreateAuthUserEmailAndPassword,
-  createUserDocumnetFromAuth,
   signInWithGooglePopup,
   signInWithAuthEmailAndPassword,
 } from '../../utils/firebase/firebase.utils'
@@ -18,7 +16,7 @@ const SignIn = () => {
   // const { setCurrentUer } = useContext(UserContext)  no need because we are centeralizing it in context like our inhouse projects
   const [formFields, setFormFields] = useState(FormFields)
 
-  const { displayName, email, password, confirmPassword } = formFields
+  const { email, password } = formFields
   const resetFrom = () => {
     setFormFields(FormFields)
   }

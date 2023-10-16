@@ -5,7 +5,6 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './context/user.context'
-import { ProductsProvider } from './context/Categories.context'
 import { CategoriesProvider } from './context/Categories.context'
 import { CartProvider } from './context/Cart.Context'
 const root = ReactDOM.createRoot(document.getElementById('root'))

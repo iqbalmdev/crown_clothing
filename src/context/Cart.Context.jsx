@@ -1,4 +1,4 @@
-import { Children, createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 export const addCartItem = (cartItems, productToAdd) => {
   const isExistingCartitem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id,
@@ -24,7 +24,7 @@ export const addCartItem = (cartItems, productToAdd) => {
 
 export const CartContext = createContext({
   setCart: false,
-  setCart: () => null,
+
   cartItems: [],
   addItemTocart: () => {},
   cartCount: 0,
@@ -98,15 +98,14 @@ export const CartProvider = ({ children }) => {
     return setCartItems(decreaseTheCartItem(cartItems, productToReduce))
   }
 
-  const calculateAmount = () => {
-    const calculateTheTotalAmount = cartItems.reduce(
-      (acc, curr) => acc + curr.quantity * curr.price,
-      0,
-    )
-    return setTotal(calculateTheTotalAmount)
-  }
-
   useEffect(() => {
+    const calculateAmount = () => {
+      const calculateTheTotalAmount = cartItems.reduce(
+        (acc, curr) => acc + curr.quantity * curr.price,
+        0,
+      )
+      return setTotal(calculateTheTotalAmount)
+    }
     calculateAmount()
   }, [cartItems])
   console.log(total, 'total amount see hereeeeeeee')

@@ -3,21 +3,21 @@ import SignUpForm from '../../components/sign-up-form/sign-up-form.component'
 import {
   signInWithGooglePopup,
   createUserDocumnetFromAuth,
-  signInWithGoogleRedirect,
+  // signInWithGoogleRedirect,
   auth,
 } from '../../utils/firebase/firebase.utils'
 import { getRedirectResult } from 'firebase/auth'
 import SignIn from '../../components/sign-in-form-comp/sign-in-form.component'
 import './authentication.styles.scss'
 const Authentication = () => {
-  const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup()
-    const userDocRef = await createUserDocumnetFromAuth(user)
-    console.log(
-      userDocRef,
-      'returing from the firebase user creating instances',
-    )
-  }
+  // const logGoogleUser = async () => {
+  //   const { user } = await signInWithGooglePopup()
+  //   const userDocRef = await createUserDocumnetFromAuth(user)
+  //   console.log(
+  //     userDocRef,
+  //     'returing from the firebase user creating instances',
+  //   )
+  // }
 
   useEffect(() => {
     async function fetchData() {

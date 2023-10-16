@@ -15,12 +15,12 @@ import {
   doc,
   getDoc,
   setDoc,
-  addDoc,
-  Firestore,
   collection,
   writeBatch,
   query,
   getDocs,
+  // addDoc,
+  // Firestore,
 } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -36,7 +36,7 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const fireBaseApp = initializeApp(firebaseConfig)
+// const fireBaseApp = initializeApp(firebaseConfig)
 const googleProvider = new GoogleAuthProvider() // googleAuth provider is a class form google firebase
 
 googleProvider.setCustomParameters({
@@ -71,11 +71,6 @@ export const addNewCollection1 = async () => {
     doc(db, 'samplesIqbalgv', customDocumentId)
 
     // Define the data you want to set in the document
-    const data = {
-      name: 'nisha',
-      age: 19,
-      // Add other fields as needed
-    }
 
     // Set the data in the document
     // await setDoc(documentRef, data)
