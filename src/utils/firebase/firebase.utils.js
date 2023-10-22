@@ -169,5 +169,5 @@ export const handleSignOut = async () => {
 }
 
 export const onAuthStateHanlder = (callback) => {
-  onAuthStateChanged(auth, callback) // this onAuthStateChanged handler is used foe storing the current auth information the current auth information is like when a user signed in then the user object and when the user signed out the null object
+  onAuthStateChanged(auth, callback) // this onAuthStateChanged handler is used for storing the current auth information the current auth information is like when a user signed in then the user object and when the user signed out the null object
 }

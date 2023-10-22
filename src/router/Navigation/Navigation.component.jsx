@@ -14,7 +14,7 @@ const Navigation = () => {
   //   const res = await handleSignOut() // Call the sign-out function
 
   // }
-  const { cart } = useContext(CartContext)
+  const { cart, isCartOpen } = useContext(CartContext)
   return (
     <Fragment>
       <div className="navigation">
@@ -37,7 +37,7 @@ const Navigation = () => {
 
           <CartIcon />
         </div>
-        {cart ? <CartDropdown /> : null}
+        {isCartOpen ? <CartDropdown /> : null}
       </div>
       <Outlet />
     </Fragment>

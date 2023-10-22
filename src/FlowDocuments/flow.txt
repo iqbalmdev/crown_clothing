@@ -7,6 +7,20 @@ UserProvider: This component manages the state related to user data and provides
 UserContext: This is the context object that defines what data is available and how to access it. It's typically exported to allow other components to use it.
 
 
+Differnce between context api and redux
+Context API is a new way to pass data through the component tree without having to use props drilling. It’s used for passing down global values
+while on the other hand redux is a way of maanging the states in global way that even the child element has the access to state form the parenet element component states
 
+  <BrowserRouter>
+      <UserProvider>
+        <CategoriesProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </CategoriesProvider>
+      </UserProvider>
+    </BrowserRouter>
+    here app has all the satate acess like user,cart and catgeory in the other hand any component which is outsode the context will not have acess to that so solving that issues we are going redux.
 
-
+    Data flow:
+    

@@ -6,14 +6,14 @@ import './card-DropDown.styles.scss'
 import { CartContext } from '../../context/Cart.Context'
 import CartItem from '../Cart-Item/Cart-Item.component'
 const CartDropdown = () => {
-  const { cartItems, setCart } = useContext(CartContext)
+  const { cartItems, setCart, cartItemsRed } = useContext(CartContext)
   console.log(cartItems, 'see here cart items')
   const navigate = useNavigate()
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
-        {cartItems.length ? (
-          cartItems?.map((cartItem) => (
+        {cartItemsRed.length ? (
+          cartItemsRed?.map((cartItem) => (
             <CartItem key={cartItem.id} cartItem={cartItem} />
           ))
         ) : (
