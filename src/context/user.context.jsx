@@ -62,7 +62,7 @@ export const UserProvider = ({ children }) => {
 
       setCurrentUer(authChangResponse)
 
-      console.log(authChangResponse, 'handler chnagedddddddd')
+      // console.log(authChangResponse, 'handler chnagedddddddd')
       // what is onAuthStateHandler fucntion does is like when ever the sign in and sign out functions changes it will notice that and return  a call back that call back will intrune provide the authChangeResponse that response will needs to be set in the userState i.e. setCurrentUser and then if they are doing signup then needs to creare a user document for them moreover authstate changed will return as a call back that call back will have the object like when a user gets signed up form that object we will do some operations
     })
     return unSubscribe

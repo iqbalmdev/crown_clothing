@@ -6,10 +6,12 @@ import ProductCard from '../../components/Product-Card/Product-Card'
 import { CategoriesContext } from '../../context/Categories.context'
 
 import './Catgeory.styles.scss'
-
+import { useSelector } from 'react-redux'
+import { setCategories } from '../../store/categories/categories.selector'
 const Category = () => {
   const { category } = useParams()
-  const { categoriesMap } = useContext(CategoriesContext)
+  const categoriesMap = useSelector(setCategories)
+  // const { categoriesMap } = useContext(CategoriesContext)
   const [products, setProducts] = useState(categoriesMap[category])
 
   useEffect(() => {

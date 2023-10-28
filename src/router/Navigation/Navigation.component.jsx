@@ -7,13 +7,16 @@ import './navigation.styles.scss'
 import { UserContext } from '../../context/user.context'
 import { handleSignOut } from '../../utils/firebase/firebase.utils'
 import { CartContext } from '../../context/Cart.Context'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser } from '../../store/user/user.selector'
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext)
-  console.log('Context value coming', currentUser)
+  // const { currentUser } = useContext(UserContext)
   // const handleSignOutEMail = async () => {
   //   const res = await handleSignOut() // Call the sign-out function
 
   // }
+
+  const currentUser = useSelector(selectCurrentUser)
   const { cart, isCartOpen } = useContext(CartContext)
   return (
     <Fragment>
