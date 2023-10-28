@@ -17,11 +17,11 @@ const Shop = () => {
       const categoryMap = await getCategoriesAndDocuments('categories')
 
       dispatch(getAllCategories(categoryMap))
+      console.log(categoryMap, 'catgeory from fire base')
     }
     getCategoryMap()
   }, [])
-  const categoriesMap = useSelector(setCategories)
-  console.log(categoriesMap, 'from redux function')
+
   return (
     <Routes>
       <Route index element={<CategoryPreview />} />
