@@ -17,7 +17,6 @@ const Shop = () => {
       const categoryMap = await getCategoriesAndDocuments('categories')
 
       dispatch(getAllCategories(categoryMap))
-      console.log(categoryMap, 'catgeory from fire base')
     }
     getCategoryMap()
   }, [])

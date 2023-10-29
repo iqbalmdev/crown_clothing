@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 import { useReducerFunc } from './user/user.reducer'
 import { categoriesReducerFunc } from './categories/catgeories.reducer'
+import { cartReducer } from './cart/cart.reducer'
 export const rootReducer = combineReducers({
   user: useReducerFunc,
   categories: categoriesReducerFunc,
+  cart: cartReducer,
 })
 
 // we need action that is to update the reducer and get a new state and then seletor is the things that will get the data from the redux moreover the things is like action needs types that types need a action that needs to perform in the reducer switch or conditional statements first the flow is like

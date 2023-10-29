@@ -5,15 +5,17 @@ import { useNavigate } from 'react-router-dom'
 import './card-DropDown.styles.scss'
 import { CartContext } from '../../context/Cart.Context'
 import CartItem from '../Cart-Item/Cart-Item.component'
+import { useSelector } from 'react-redux'
+
+import { selectCartItems } from '../../store/cart/cart.selector.js'
 const CartDropdown = () => {
-  const { cartItems, setCart, cartItemsRed } = useContext(CartContext)
-  console.log(cartItems, 'see here cart items')
+  const cartItems = useSelector(selectCartItems)
   const navigate = useNavigate()
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
-        {cartItemsRed.length ? (
-          cartItemsRed?.map((cartItem) => (
+        {cartItems.length ? (
+          cartItems?.map((cartItem) => (
             <CartItem key={cartItem.id} cartItem={cartItem} />
           ))
         ) : (
@@ -23,7 +25,6 @@ const CartDropdown = () => {
       <Button
         onClick={() => {
           navigate('checkout')
-          setCart(false)
         }}
       >
         GO TO CHECKOUT

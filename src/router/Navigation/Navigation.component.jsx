@@ -6,9 +6,11 @@ import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import './navigation.styles.scss'
 import { UserContext } from '../../context/user.context'
 import { handleSignOut } from '../../utils/firebase/firebase.utils'
-import { CartContext } from '../../context/Cart.Context'
+
 import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../store/user/user.selector'
+
+import { selectIsCartOpen } from '../../store/cart/cart.selector'
 const Navigation = () => {
   // const { currentUser } = useContext(UserContext)
   // const handleSignOutEMail = async () => {
@@ -17,7 +19,7 @@ const Navigation = () => {
   // }
 
   const currentUser = useSelector(selectCurrentUser)
-  const { cart, isCartOpen } = useContext(CartContext)
+  const isCartOpen = useSelector(selectIsCartOpen)
   return (
     <Fragment>
       <div className="navigation">
