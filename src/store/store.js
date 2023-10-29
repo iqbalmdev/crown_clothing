@@ -4,7 +4,7 @@ import logger from 'redux-logger'
 import { rootReducer } from './root-reducer'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { loggerMiddleWare } from '../middleware/logger'
+// import { loggerMiddleWare } from '../middleware/logger'
 import thunk from 'redux-thunk'
 // if we want to use custom logger than do that or use logger alone
 const persistConfig = {
