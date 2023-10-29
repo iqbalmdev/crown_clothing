@@ -12,7 +12,7 @@ const persistConfig = {
   storage,
   blacklist: ['user'], // config setup
 }
-const persistedReducer = persistReducer(persistConfig, rootReducer) // pressistreducer function will accept two arguments like configraton and rootReducer  rootreducer is where all the reducer gets combined
+const persistedReducer = persistReducer(persistConfig, rootReducer) // pressistreducer function will accept two arguments like configraton and rootReducer  rootreducer is where all the reducer gets combined for doing local storage
 const middleWares = [
   process.env.NODE_ENV !== 'production' && logger,
   thunk, // thunk is for asynchorus operation redux tunk
@@ -21,7 +21,7 @@ const customComposer =
   (process.env.NODE_ENV !== 'production' &&
     window &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-  compose // this is for setting up the redux tool only in dev env compose method for applying middelwares
+  compose // this is for setting up the redux tool only in dev env compose method for applying middelwares for redux extension tools
 
 const composeEnhancer = customComposer(applyMiddleware(...middleWares)) // this is for logging redux functions using redux logger
 export const store = legacy_createStore(
