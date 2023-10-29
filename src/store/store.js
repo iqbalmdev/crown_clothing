@@ -4,6 +4,8 @@ import logger from 'redux-logger'
 import { rootReducer } from './root-reducer'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import createSagaMiddleware from 'redux-saga'
+import { rootSaga } from './root-saga'
 // import { loggerMiddleWare } from '../middleware/logger'
 import thunk from 'redux-thunk'
 // if we want to use custom logger than do that or use logger alone
@@ -13,9 +15,12 @@ const persistConfig = {
   blacklist: ['user'], // config setup
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer) // pressistreducer function will accept two arguments like configraton and rootReducer  rootreducer is where all the reducer gets combined
+
+const sagaMidlleware = createSagaMiddleware()
 const middleWares = [
   process.env.NODE_ENV !== 'production' && logger,
-  thunk,
+  sagaMidlleware,
+  // thunk,
 ].filter(Boolean) // this will do local storgae for our redux function using presisitent method
 const customComposer =
   (process.env.NODE_ENV !== 'production' &&
@@ -30,5 +35,5 @@ export const store = legacy_createStore(
   composeEnhancer,
 )
 // what previuosly is like we are oly passing the store state in the create store insted now we are passing the presistedReducer becuasy we need to captire the values of the redux store
-
+sagaMidlleware.run(rootSaga)
 export const persistor = persistStore(store)
