@@ -10,23 +10,25 @@ import thunk from 'redux-thunk'
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['user'],
+  blacklist: ['user'], // config setup
 }
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer) // pressistreducer function will accept two arguments like configraton and rootReducer  rootreducer is where all the reducer gets combined
 const middleWares = [
   process.env.NODE_ENV !== 'production' && logger,
   thunk,
-].filter(Boolean)
+].filter(Boolean) // this will do local storgae for our redux function using presisitent method
 const customComposer =
   (process.env.NODE_ENV !== 'production' &&
     window &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-  compose
-const composeEnhancer = customComposer(applyMiddleware(...middleWares))
+  compose // this is for setting up the redux tool only in dev env compose method for applying middelwares
+
+const composeEnhancer = customComposer(applyMiddleware(...middleWares)) // this is for logging redux functions using redux logger
 export const store = legacy_createStore(
   persistedReducer,
   undefined,
   composeEnhancer,
 )
+// what previuosly is like we are oly passing the store state in the create store insted now we are passing the presistedReducer becuasy we need to captire the values of the redux store
 
 export const persistor = persistStore(store)
