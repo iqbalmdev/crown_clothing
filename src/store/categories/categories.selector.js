@@ -7,6 +7,10 @@ export const selectCategories = createSelector(
   (categoriesSlice) => categoriesSlice.categories,
 )
 
+export const selectisLoadingState = createSelector(
+  [selectCategoreyReducer],
+  (categoriesSlice) => categoriesSlice.isLoading,
+)
 export const setCategories = createSelector([selectCategories], (categories) =>
   categories.reduce((acc, catgeory) => {
     const { title, items } = catgeory
