@@ -7,6 +7,11 @@ import {
 } from '../../utils/firebase/firebase.utils'
 import InputComponent from '../form-input/form-input.component'
 import Button from '../Button/Button.component'
+import { useDispatch } from 'react-redux'
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../store/user/user.action.js'
 // import { UserContext } from '../../context/user.context'  no need because we are centeralizing it in context like our inhouse projects
 const FormFields = {
   email: '',
@@ -31,19 +36,21 @@ const SignIn = () => {
     event.preventDefault()
 
     try {
-      const { user } = await signInWithAuthEmailAndPassword(email, password)
-      // setCurrentUer(user) no need because we are centeralizing it in context like our inhouse projects
-      console.log(user, 'sign i reponse')
+      // const { user } = await signInWithAuthEmailAndPassword(email, password)
+      // // setCurrentUer(user) no need because we are centeralizing it in context like our inhouse projects
+      // console.log(user, 'sign i reponse')
+      dispatch(emailSignInStart(email, password))
     } catch (error) {
       console.log(error, 'error in creating user')
     }
     resetFrom()
   }
-
+  const dispatch = useDispatch()
   const SignInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup()
+    // const { user } = await signInWithGooglePopup()
     // const userDocRef = await createUserDocumnetFromAuth(user) no need here because we centeralised it in the user context
-    console.log(user, 'Sign in with google')
+
+    dispatch(googleSignInStart())
   }
   return (
     <Fragment>

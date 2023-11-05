@@ -23,4 +23,24 @@ while on the other hand redux is a way of maanging the states in global way that
     here app has all the satate acess like user,cart and catgeory in the other hand any component which is outsode the context will not have acess to that so solving that issues we are going redux.
 
     Data flow:
-    
+
+
+Redux thunk:
+const incrementCounterAsync = (value) => {
+  return (dispatch, getState) => {
+    setTimeout(() => {
+      dispatch(incrementCounter(value));
+    }, 1000);
+  };
+};
+
+In the above example, the incrementCounterAsync action creator does not return an action object directly. Instead, it returns a function that accepts dispatch so it can dispatch an action after a timeout.
+How It Works
+
+When you use Redux Thunk, an action creator returns a function, Redux Thunk middleware intercepts it. If an action creator returns an action (plain object), it forwards the action to the reducers. If it returns a function, Redux Thunk calls this function with dispatch and getState arguments. You can then execute any asynchronous code and dispatch actions when the asynchronous operations are done.
+
+
+Redux: https://chat.openai.com/share/f2740a88-0711-41d1-b231-d1e1ddf91dfa  -- follow this link for saga understanding
+redux is a side effect management libraray used in react for managing all side effects based functions 
+main things in saga
+call: Call a function. If it returns a Promise, it will pause the saga until the Promise is resolved.

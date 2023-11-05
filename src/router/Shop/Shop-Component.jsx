@@ -8,12 +8,15 @@ import {
 } from '../../utils/firebase/firebase.utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCategories } from '../../store/categories/categories.selector'
-import { fetchCatgeoriesAsync } from '../../store/categories/categories.action'
+import {
+  // fetchCatgeoriesAsync,
+  fetchCategoriesStart,
+} from '../../store/categories/categories.action'
 const Shop = () => {
   // redux method
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchCatgeoriesAsync())
+    dispatch(fetchCategoriesStart())
   }, [])
 
   return (

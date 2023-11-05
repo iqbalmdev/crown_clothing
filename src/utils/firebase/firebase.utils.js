@@ -142,9 +142,9 @@ export const createUserDocumnetFromAuth = async (
       console.log('error in creating user', error)
     }
   }
-  return {
-    userDocRef: userDocRef,
-  } // if user exists then simply return the userDocRef and then it will contain the user data in the particular colllect
+  return userSnapShot
+
+  // if user exists then simply return the userDocRef and then it will contain the user data in the particular colllect
 }
 
 export const CreateAuthUserEmailAndPassword = async (email, password) => {
@@ -172,4 +172,19 @@ export const handleSignOut = async () => {
 
 export const onAuthStateHanlder = (callback) => {
   onAuthStateChanged(auth, callback) // this onAuthStateChanged handler is used for storing the current auth information the current auth information is like when a user signed in then the user object and when the user signed out the null object
+}
+
+// for handling an redux saga operation need to change the authStateChanged into a promise
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unSubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unSubscribe()
+        resolve(userAuth)
+      },
+      reject,
+    )
+  })
 }
