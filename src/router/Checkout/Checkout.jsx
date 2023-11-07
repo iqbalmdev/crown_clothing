@@ -1,7 +1,3 @@
-import { useContext } from 'react'
-
-import { CartContext } from '../../context/Cart.Context'
-
 import CheckoutItem from '../../components/Checkout-item/Checkout.component'
 import { useSelector } from 'react-redux'
 

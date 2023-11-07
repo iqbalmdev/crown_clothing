@@ -19,6 +19,11 @@ export const useReducerFunc = (state = INITIAL_STATE, action) => {
         ...state,
         error: payload,
       }
+    case USER_AUTH_TYPE.SIGN_OUT_SUCCESS:
+      return { ...state, currentUser: null }
+    case USER_AUTH_TYPE.SIGN_OUT_FAILED:
+    case USER_AUTH_TYPE.SIGN_UP_FAILED:
+      return { ...state, error: payload }
     default:
       return state
   }

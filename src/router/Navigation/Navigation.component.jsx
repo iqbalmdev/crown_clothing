@@ -1,25 +1,26 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import CartIcon from '../../components/Cart-Icon/Cart-Icon.component'
 import CartDropdown from '../../components/Card-DropDown/Card-DropDown.component'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import './navigation.styles.scss'
-import { UserContext } from '../../context/user.context'
 import { handleSignOut } from '../../utils/firebase/firebase.utils'
 
-import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../store/user/user.selector'
 
 import { selectIsCartOpen } from '../../store/cart/cart.selector'
+import { signOutStart } from '../../store/user/user.action'
+import { useSelector, useDispatch } from 'react-redux'
 const Navigation = () => {
   // const { currentUser } = useContext(UserContext)
   // const handleSignOutEMail = async () => {
   //   const res = await handleSignOut() // Call the sign-out function
 
   // }
-
+  const dispatch = useDispatch()
   const currentUser = useSelector(selectCurrentUser)
   const isCartOpen = useSelector(selectIsCartOpen)
+  const signOutUser = () => dispatch(signOutStart())
   return (
     <Fragment>
       <div className="navigation">
@@ -31,7 +32,7 @@ const Navigation = () => {
             SHOP
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={handleSignOut}>
+            <span className="nav-link" onClick={signOutUser}>
               SIG OUT
             </span>
           ) : (

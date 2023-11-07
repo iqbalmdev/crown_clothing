@@ -1,9 +1,7 @@
-import { useContext, useState, useEffect, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 
 import ProductCard from '../../components/Product-Card/Product-Card'
-
-import { CategoriesContext } from '../../context/Categories.context'
 
 import './Catgeory.styles.scss'
 import { useSelector } from 'react-redux'
