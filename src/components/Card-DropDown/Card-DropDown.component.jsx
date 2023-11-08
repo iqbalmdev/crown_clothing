@@ -1,9 +1,8 @@
-import { useContext } from 'react'
+
 
 import Button from '../Button/Button.component'
 import { useNavigate } from 'react-router-dom'
 import './card-DropDown.styles.scss'
-import { CartContext } from '../../context/Cart.Context'
 import CartItem from '../Cart-Item/Cart-Item.component'
 import { useSelector } from 'react-redux'
 

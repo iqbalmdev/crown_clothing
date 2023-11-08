@@ -2,7 +2,7 @@ import { CardElement,useStripe,useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Button ,{Button_Type_Classes}from "../Button/Button.component"
-import {PaymentFormContainer,FormContainer,PaymentButton} from "./Payment-form.styles"
+import {PaymentFormContainer,FormContainer} from "./Payment-form.styles"
 import {selectCartTotal} from "../../store/cart/cart.selector"
 import {selectCurrentUser} from "../../store/user/user.selector"
 const PaymentForm =()=>{
@@ -16,7 +16,7 @@ const currentUser = useSelector(selectCurrentUser)
         if(!stripe||!element){
             return
         }
-
+setIsPaymentProcessing(true)
         const res = await fetch("/.netlify/functions/create-payment-intent",{
             method:'post',
             headers:{

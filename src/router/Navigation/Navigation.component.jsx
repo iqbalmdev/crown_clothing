@@ -1,10 +1,9 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import CartIcon from '../../components/Cart-Icon/Cart-Icon.component'
 import CartDropdown from '../../components/Card-DropDown/Card-DropDown.component'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import './navigation.styles.scss'
-import { UserContext } from '../../context/user.context'
 import { handleSignOut } from '../../utils/firebase/firebase.utils'
 
 import { useSelector } from 'react-redux'

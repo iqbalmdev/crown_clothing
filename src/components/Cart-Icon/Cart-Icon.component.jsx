@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './Cart-Icon.styles.scss'
 import { ReactComponent as ShopIcon } from '../../assets/shopping-bag.svg'
 import { setIsCartOpen } from '../../store/cart/cart.action'

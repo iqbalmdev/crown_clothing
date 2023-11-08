@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { createContext } from 'react'
 import { useReducer } from 'react'
 import {
@@ -31,9 +31,9 @@ const useReducerFunc = (state, action) => {
   }
 }
 
-const INITIAL_STATE = {
-  currentUsera: null,
-}
+// const INITIAL_STATE = {
+//   currentUsera: null,
+// }
 export const UserProvider = ({ children }) => {
   // const [currentUser, setCurrentUer] = useState(null)
 
@@ -42,9 +42,9 @@ export const UserProvider = ({ children }) => {
   const { currentUser } = state
   const setCurrentUer = (user) => {
     // dispatch({ type: USER_AUTH_TYPE.authStateChanged, payload: user })
-    const payload = {
-      user,
-    }
+    // const payload = {
+    //   user,
+    // }
     dispatch(createAction(USER_AUTH_TYPE.authStateChanged, user))
   }
   useEffect(() => {

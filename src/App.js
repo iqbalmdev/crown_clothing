@@ -34,7 +34,7 @@ function App() {
       // console.log(authChangResponse, 'handler chnagedddddddd')
     })
     return unSubscribe
-  }, [])
+  },)
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
