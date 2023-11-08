@@ -24,3 +24,5 @@ while on the other hand redux is a way of maanging the states in global way that
 
     Data flow:
     
+Stripe:
+
