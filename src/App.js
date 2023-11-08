@@ -16,6 +16,7 @@ import { setCurrentUer } from './store/user/user.action'
 import { useDispatch } from 'react-redux'
 function App() {
   const dispatch = useDispatch()
+  console.log(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY,"environment key heree")
   useEffect(() => {
     const unSubscribe = onAuthStateHanlder(async (authChangResponse) => {
       if (authChangResponse) {
