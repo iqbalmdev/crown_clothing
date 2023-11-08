@@ -33,3 +33,8 @@ export const store = legacy_createStore(
 // what previuosly is like we are oly passing the store state in the create store insted now we are passing the presistedReducer becuasy we need to captire the values of the redux store
 
 export const persistor = persistStore(store)
+
+// const middleWares = [logger]
+
+// const composeEnhancer = compose(applyMiddleware(...middleWares))
+// export const store = legacy_createStore(rootReducer, undefined, composeEnhancer) this was the previuos setup of middle wares and logger
