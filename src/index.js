@@ -23,10 +23,11 @@ root.render(
           {/* <UserProvider> */}
           {/* <CategoriesProvider> */}
           {/* <CartProvider> */}
-          <Elements stripe={stripePromise}>
-
+     
+<Elements stripe={stripePromise}>
           <App />
-          </Elements>
+</Elements>
+     
           {/* </CartProvider> */}
           {/* </CategoriesProvider> */}
           {/* </UserProvider> */}
