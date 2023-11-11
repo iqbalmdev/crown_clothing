@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Tirunelveli",
+			"country": {
+				"code": "IN",
+				"name": "India"
+			},
+			"subdivision": {
+				"code": "TN",
+				"name": "Tamil Nadu"
+			},
+			"timezone": "Asia/Kolkata",
+			"latitude": 8.7272,
+			"longitude": 77.687
+		},
+		"timestamp": 1699437458269
+	}
+}
