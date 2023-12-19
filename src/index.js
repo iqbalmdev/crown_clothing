@@ -18,6 +18,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={<Loading />}>
+        {
+          /* it will stop loading hen the redux store retrives the store varaibles*/
+        }
         <BrowserRouter>
           {/* <UserProvider> */}
           {/* <CategoriesProvider> */}
